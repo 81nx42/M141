@@ -85,14 +85,14 @@ Nun füllen wir unsere Tables mithilfe der Vorgegebenen Backpacker CSV Datei.
 [Link zum Backpacker](https://gitlab.com/ch-tbz-it/Stud/m141/m141/-/blob/main/LB3-Praxisarbeit/backpacker_lb3.csv.zip)
 
 1. Extahiere die Datei und öffne sie.
-[Bild CSV dateien](image.png)
+![Bild CSV dateien](image.png)
 
-2. Damit du die Dateien in die DB importien kannst, musst du Folgenden Befehl ausführen.`
+2. Damit du die Dateien in die DB importien kannst, musst du Folgenden Befehl ausführen.
 
 ```
 mysql --local-infile=1 -u root
 ```
-3. Nun kopiere den Pfad und führe den folgenden befehl in deinem Terminal aus. Führe die Befehle einzeln aus. Jede CSV Datei wird zum ensprechenden Table importiert.
+3. Nun kopiere den Pfad und führe den folgenden befehl in deinem Terminal aus. Jede CSV Datei wird zum ensprechenden Table importiert.
 
 ```
 LOAD DATA INFILE 'C:/Users/noah_/Desktop/CSV-dateien_lb3/backpacker_lb3.csv/backpacker_lb3_table_tbl_benutzer.csv'
@@ -143,5 +143,11 @@ LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 ```
 
+## AWS 
 
+Nun kommen wir zur erstellung der Cloud Datenbank
+
+1. Öffne Services und gehe aud RDS. Klicke auf 'Erstelle Datenbank' und mache folgende KOnfigurationen. Verändere nur das was auf den Bildern gezeigt wird
+
+![alt text](image-1.png)
 
