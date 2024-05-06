@@ -7,7 +7,6 @@ Dieses MD beinhaltet den ablauf von Erstellung der DB bis zur Migrierung. Alles 
 
 Im XAMPP war es mein erster schritt eine Lokale Datenbank zu erstellen. 
 
-'''
+```
 CREATE DATABASE local_db;
-
-'''
+```
