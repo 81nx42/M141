@@ -151,3 +151,49 @@ Nun kommen wir zur erstellung der Cloud Datenbank
 
 ![alt text](image-1.png)
 
+![alt text](image-3.png)
+
+Vorlagen
+![alt text](image-4.png)
+
+Passwort selber wählen
+![alt text](image-5.png)
+
+Neues VPC ertsellen (&namen geben), neue Subnetzgruppe, Öffentlicher Zugriff
+![alt text](image-7.png)
+
+2. Nun hast du deine Datenbank erstellt. Jetzt verbinden wir uns auf diese. Dazu kopierst du den Endpunkt, und füge ihn ensprechend ein. Gehe nun auf XAMPP öffne eine shell und füre diesen befehl aus. 
+
+```
+mysql -h (endpunkt) -u admin -p
+```
+
+3. Jetzt erstellst du eine neue Datenbank 
+
+```
+CREATE DATABASE new_database;
+```
+
+## Migration 
+
+Nun werden wir schritt für schritt die Lokale datenbank auf die Cloud migriern. 
+
+1. Führe den befehl auf deiner Lokalen DB aus.
+
+```
+mysqldump -u username -p database_name > data-dump.sql
+``` 
+2. diesen Dump findest du dan in deinem Downloads Ordner. Führe nun diesen befehl auf deiner Cloud aus. 
+
+![alt text](image-8.png)
+
+```
+mysql -h (endpunkt) -u username -p new_database < data-dump.sql
+```
+
+3. Mit folgendem Befehl testest du ob der Dump funktioniert hat.
+
+```
+Show tables;
+```
+
