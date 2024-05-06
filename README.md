@@ -8,7 +8,7 @@ Eine kleine Jugendherberge verwaltet ihre Übernachtungen und die Zugänge der A
 
 # LB3 Praxisarbeit: Backpacker_LB3 migrieren
 
-![Rahmen](./x_res/LB3-Rahmen.png)
+![Rahmen](LB3-Rahmen.png)
 
 **Product Backlog**
 
