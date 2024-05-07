@@ -7,7 +7,7 @@ Dieses MD beinhaltet den ablauf von Erstellung der DB bis zur Migrierung. Alles 
 
 1. Im XAMPP war es mein erster schritt eine Lokale Datenbank zu erstellen. 
 
-```
+```sql
 CREATE DATABASE lb3;
 ```
 2. Dann habe ich damit begonnen die Datenbank mit dem vorgegebenen inhalt zu füllen.
@@ -23,17 +23,17 @@ In diesem Abschnitt erstellen wir Benutzer & Benutzergruppen und fügen den Grup
 
 1. Zuerst erstellen wir einen Benutzer (name'benutzer')
 
-```
+```sql
 CREATE USER 'benutzer'@'%' IDENTIFIED BY'password1';
 ```
 2. Jetzt erstellen wir eine Rolle für die Gruppe 'Benutzer'.
 
-```
+```sql
 CREATE ROLE benutzer_grp1;
 ```
 3. Nun fügen wir Privilegien der Rolle hinzu.
 
-```
+```sql
 GRANT SELECT, UPDATE ON lb3.tbl_personen TO benutzer_grp1;
 GRANT SELECT (deaktiviert) ON lb3.tbl_benutzer TO benutzer_grp1;
 GRANT SELECT, INSERT, UPDATE (aktiv, Benutzergruppe , Benutzername, erfasst, Name, Vorname) ON lb3.tbl_benutzer TO benutzer_grp1;
@@ -44,7 +44,7 @@ GRANT SELECT ON lb3.tbl_leistung TO benutzer_grp1;
 ```
 4. Füge nun die Rolle dem ensprechenden Benutzer hinzu.
 
-```
+```sql
 GRANT benutzer_grp TO 'benutzer'@'%';
 FLUSH PRIVILEGES;
 ```
@@ -52,19 +52,19 @@ FLUSH PRIVILEGES;
 
 1. Benutzer erstellen
 
-```
+```sql
 CREATE USER 'management'@'%' IDENTIFIED BY'password1';
 ```
 
 2. Rolle erstellen
 
-```
+```sql
 CREATE ROLE management_grp;
 ```
 
 3. Privillegien in Rolle einfügen
 
-```
+```sql
 GRANT SELECT ON lb3.tbl_positionen TO management_grp;
 GRANT SELECT ON lb3.tbl_buchung TO management_grp;
 GRANT SELECT, INSERT, UPDATE, DELETE ON lb3.tbl_personen TO management_grp;
@@ -75,7 +75,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON lb3.tbl_benutzer TO management_grp;
 
 4. Füge Rolle dem benutzer 'management' hinzu 
 
-```
+```sql
 GRANT management_grp TO 'management'@'%';
 FLUSH PRIVILEGES;
 ```
@@ -89,12 +89,12 @@ Nun füllen wir unsere Tables mithilfe der Vorgegebenen Backpacker CSV Datei.
 
 2. Damit du die Dateien in die DB importien kannst, musst du Folgenden Befehl ausführen.
 
-```
+```sql
 mysql --local-infile=1 -u root
 ```
 3. Nun kopiere den Pfad und führe den folgenden befehl in deinem Terminal aus. Jede CSV Datei wird zum ensprechenden Table importiert.
 
-```
+```sql
 LOAD DATA INFILE 'C:/Users/noah_/Desktop/CSV-dateien_lb3/backpacker_lb3.csv/backpacker_lb3_table_tbl_benutzer.csv'
 INTO TABLE tbl_benutzer
 FIELDS TERMINATED BY ','
@@ -102,7 +102,7 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 ```
-```
+```sql
 LOAD DATA INFILE 'C:/Users/noah_/Desktop/CSV-dateien_lb3/backpacker_lb3.csv/backpacker_lb3_table_tbl_buchung.csv'
 INTO TABLE tbl_buchung
 FIELDS TERMINATED BY ','
@@ -110,7 +110,7 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 ``` 
-```
+```sql
 LOAD DATA INFILE 'C:/Users/noah_/Desktop/CSV-dateien_lb3/backpacker_lb3.csv/backpacker_lb3_table_tbl_land.csv'
 INTO TABLE tbl_land
 FIELDS TERMINATED BY ','
@@ -118,7 +118,7 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 ```
-```
+```sql
 LOAD DATA INFILE 'C:/Users/noah_/Desktop/CSV-dateien_lb3/backpacker_lb3.csv/backpacker_lb3_table_tbl_leistung.csv'
 INTO TABLE tbl_leistung
 FIELDS TERMINATED BY ','
@@ -126,7 +126,7 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 ```
-```
+```sql
 LOAD DATA INFILE 'C:/Users/noah_/Desktop/CSV-dateien_lb3/backpacker_lb3.csv/backpacker_lb3_table_tbl_personen.csv'
 INTO TABLE tbl_personen
 FIELDS TERMINATED BY ','
@@ -134,7 +134,7 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 ```
-```
+```sql
 LOAD DATA INFILE 'C:/Users/noah_/Desktop/CSV-dateien_lb3/backpacker_lb3.csv/backpacker_lb3_table_tbl_positionen.csv'
 INTO TABLE tbl_positionen
 FIELDS TERMINATED BY ','
@@ -164,13 +164,13 @@ Neues VPC ertsellen (&namen geben), neue Subnetzgruppe, Öffentlicher Zugriff
 
 2. Nun hast du deine Datenbank erstellt. Jetzt verbinden wir uns auf diese. Dazu kopierst du den Endpunkt, und füge ihn ensprechend ein. Gehe nun auf XAMPP öffne eine shell und füre diesen befehl aus. 
 
-```
+```sql
 mysql -h (endpunkt) -u admin -p
 ```
 
 3. Jetzt erstellst du eine neue Datenbank 
 
-```
+```sql
 CREATE DATABASE new_database;
 ```
 
@@ -187,13 +187,13 @@ mysqldump -u username -p database_name > data-dump.sql
 
 ![alt text](image-8.png)
 
-```
+```sql
 mysql -h (endpunkt) -u username -p new_database < data-dump.sql
 ```
 
 3. Mit folgendem Befehl testest du ob der Dump funktioniert hat.
 
-```
+```sql
 Show tables;
 ```
 
