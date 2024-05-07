@@ -1,6 +1,6 @@
 # Einleitung
 
-Dieses MD beinhaltet den ablauf von Erstellung der DB bis zur Migrierung. Alles wird hier schritt für schritt erklärt.
+Dieses MD beinhaltet den ablauf von Erstellung der DB bis zur Migrierung. Alles wird hier schritt für schritt erklärt. Alle dazugehörenden Skripte sind ebenfalls im Repository enthalten. 
 
 
 ## XAMPP
@@ -24,7 +24,7 @@ In diesem Abschnitt erstellen wir Benutzer & Benutzergruppen und fügen den Grup
 1. Zuerst erstellen wir einen Benutzer (name'benutzer')
 
 ```
-CREATE USER 'benutzer'@'localhost' IDENTIFIED BY'password1';
+CREATE USER 'benutzer'@'%' IDENTIFIED BY'password1';
 ```
 2. Jetzt erstellen wir eine Rolle für die Gruppe 'Benutzer'.
 
@@ -45,7 +45,7 @@ GRANT SELECT ON lb3.tbl_leistung TO benutzer_grp1;
 4. Füge nun die Rolle dem ensprechenden Benutzer hinzu.
 
 ```
-GRANT benutzer_grp TO 'benutzer'@'localhost';
+GRANT benutzer_grp TO 'benutzer'@'%';
 FLUSH PRIVILEGES;
 ```
 ### Benutzergruppe 'management'
@@ -53,7 +53,7 @@ FLUSH PRIVILEGES;
 1. Benutzer erstellen
 
 ```
-CREATE USER 'management'@'localhost' IDENTIFIED BY'password1';
+CREATE USER 'management'@'%' IDENTIFIED BY'password1';
 ```
 
 2. Rolle erstellen
@@ -76,7 +76,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON lb3.tbl_benutzer TO management_grp;
 4. Füge Rolle dem benutzer 'management' hinzu 
 
 ```
-GRANT management_grp TO 'management'@'localhost';
+GRANT management_grp TO 'management'@'%';
 FLUSH PRIVILEGES;
 ```
 ## CSV Dateien Implementieren
@@ -201,6 +201,6 @@ Show tables;
 
 Jetzt finden wir heraus ob alles so geklappt hat wir wir es wollten oder nicht.
 
-1. User Berrechtigungen testen. 
+1. User Berrechtigungen testen. mit Config
 
 
