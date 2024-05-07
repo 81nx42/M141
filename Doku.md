@@ -45,7 +45,7 @@ GRANT SELECT ON lb3.tbl_leistung TO benutzer_grp1;
 4. Füge nun die Rolle dem ensprechenden Benutzer hinzu.
 
 ```sql
-GRANT benutzer_grp TO 'benutzer'@'%';
+GRANT benutzer_grp1 TO 'benutzer'@'%';
 FLUSH PRIVILEGES;
 ```
 ### Benutzergruppe 'management'
