@@ -201,6 +201,6 @@ Show tables;
 
 Jetzt finden wir heraus ob alles so geklappt hat wir wir es wollten oder nicht.
 
-1. User Berrechtigungen testen. mit Config
+1. Benutzer und Management Berrechtigungen testen. mit Config 
 
 
