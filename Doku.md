@@ -197,3 +197,10 @@ mysql -h (endpunkt) -u username -p new_database < data-dump.sql
 Show tables;
 ```
 
+## Testphase
+
+Jetzt finden wir heraus ob alles so geklappt hat wir wir es wollten oder nicht.
+
+1. User Berrechtigungen testen. 
+
+
