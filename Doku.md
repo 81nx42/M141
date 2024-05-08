@@ -90,7 +90,7 @@ Nun füllen wir unsere Tables mithilfe der Vorgegebenen Backpacker CSV Datei.
 2. Damit du die Dateien in die DB importien kannst, musst du Folgenden Befehl ausführen.
 
 ```sql
-mysql --local-infile=1 -u root
+mysql --local-infile=1 -u root;
 ```
 3. Nun kopiere den Pfad und führe den folgenden befehl in deinem Terminal aus. Jede CSV Datei wird zum ensprechenden Table importiert.
 
